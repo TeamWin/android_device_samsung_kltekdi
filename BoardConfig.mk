@@ -1,7 +1,7 @@
 USE_CAMERA_STUB := true
 
 TARGET_NO_BOOTLOADER := true
-TARGET_BOOTLOADER_BOARD_NAME := kltekdi
+TARGET_BOOTLOADER_BOARD_NAME := MSM8974
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8974
@@ -36,7 +36,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_PREBUILT_KERNEL := device/samsung/kltekdi/zImage
 TARGET_PREBUILT_DTB := device/samsung/kltekdi/dtb.img
 
-TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/msm_dwc3/f9200000.dwc3/gadget/lun%d/file"
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/msm_dwc3/f9200000.dwc3/gadget/lun0/file"
 
 # Use this flag if the board has a ext4 partition larger than 2gb
 BOARD_HAS_LARGE_FILESYSTEM := true
