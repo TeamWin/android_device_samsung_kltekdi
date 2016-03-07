@@ -1,8 +1,14 @@
 MKBOOTIMG := device/samsung/kltekdi/mkbootimg
 
+FLASH_IMAGE_TARGET ?= recovery.tar
+
+ifdef TARGET_PREBUILT_DTB
+	BOARD_MKBOOTIMG_ARGS += --dt $(TARGET_PREBUILT_DTB)
+endif
+
 INSTALLED_RECOVERYIMAGE_TARGET := $(PRODUCT_OUT)/recovery.img
 $(INSTALLED_RECOVERYIMAGE_TARGET): $(recovery_ramdisk)
-	@echo ----- Making recovery image ------
+	@echo "------- Making recovery image -------"
 	$(hide) $(MKBOOTIMG) \
 		--kernel $(TARGET_PREBUILT_KERNEL) \
 		--ramdisk $(PRODUCT_OUT)/ramdisk-recovery.img \
@@ -10,8 +16,7 @@ $(INSTALLED_RECOVERYIMAGE_TARGET): $(recovery_ramdisk)
 		--base $(BOARD_KERNEL_BASE) \
 		--pagesize $(BOARD_KERNEL_PAGESIZE) \
 		$(BOARD_MKBOOTIMG_ARGS) \
-		--dt $(TARGET_PREBUILT_DTB) \
 		-o $(INSTALLED_RECOVERYIMAGE_TARGET)
-	@echo ----- Made recovery image -------- $@
-	$(hide) tar -C $(PRODUCT_OUT) -H ustar -c recovery.img > $(PRODUCT_OUT)/recovery.tar
-	@echo ----- Made recovery image tar -------- recovery.tar
+	@echo "------- Made recovery image: $@ -------"
+	$(hide) tar -C $(PRODUCT_OUT) -H ustar -c recovery.img > $(PRODUCT_OUT)/$(FLASH_IMAGE_TARGET)
+	@echo "------- Made flashable image: $(FLASH_IMAGE_TARGET) -------"

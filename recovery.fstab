@@ -1,4 +1,4 @@
-/modem		vfat		/dev/block/platform/msm_sdcc.1/by-name/modem		flags=backup=1;display="Modem";fsflags=ro,context=u:object_r:firmware_file:s0
+/modem		vfat		/dev/block/platform/msm_sdcc.1/by-name/modem /dev/block/platform/msm_sdcc.1/by-name/mdm	flags=backup=1;display="Modem";fsflags=ro,context=u:object_r:firmware_file:s0
 /firmware		vfat		/dev/block/platform/msm_sdcc.1/by-name/apnhlos	flags=backup=1;subpartitionof=/modem;mounttodecrypt;fsflags=ro,context=u:object_r:firmware_file:s0
 /boot		emmc		/dev/block/platform/msm_sdcc.1/by-name/boot
 /recovery		emmc		/dev/block/platform/msm_sdcc.1/by-name/recovery
