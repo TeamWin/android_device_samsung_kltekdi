@@ -10,5 +10,4 @@ $(call inherit-product, vendor/omni/config/common.mk)
 PRODUCT_DEVICE := kltekdi
 PRODUCT_NAME := omni_kltekdi
 PRODUCT_BRAND := samsung
-PRODUCT_MODEL := SCL23
 PRODUCT_MANUFACTURER := samsung
