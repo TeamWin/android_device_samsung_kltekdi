@@ -1,6 +1,6 @@
 MKBOOTIMG := device/samsung/kltekdi/mkbootimg
 
-FLASH_IMAGE_TARGET ?= recovery.tar
+FLASH_IMAGE_TARGET ?= $(PRODUCT_OUT)/recovery.tar
 
 BUILT_RAMDISK_CPIO := $(PRODUCT_OUT)/ramdisk-recovery.cpio
 COMPRESS_COMMAND :=  xz --check=crc32 --lzma2=dict=2MiB
@@ -23,5 +23,5 @@ $(INSTALLED_RECOVERYIMAGE_TARGET): $(recovery_ramdisk)
 		$(BOARD_MKBOOTIMG_ARGS) \
 		-o $(INSTALLED_RECOVERYIMAGE_TARGET)
 	@echo "------- Made recovery image: $@ -------"
-	$(hide) tar -C $(PRODUCT_OUT) -H ustar -c recovery.img > $(PRODUCT_OUT)/$(FLASH_IMAGE_TARGET)
+	$(hide) tar -C $(PRODUCT_OUT) -H ustar -c recovery.img > $(FLASH_IMAGE_TARGET)
 	@echo "------- Made flashable image: $(FLASH_IMAGE_TARGET) -------"
